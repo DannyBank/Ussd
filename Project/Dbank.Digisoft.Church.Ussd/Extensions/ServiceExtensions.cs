@@ -1,7 +1,8 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Helpers;
+﻿using Dbank.Digisoft.Church.Ussd.Helpers;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Handlers;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Helper;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Dbank.Digisoft.Church.Ussd.Extensions {
     public static class ServiceExtensions

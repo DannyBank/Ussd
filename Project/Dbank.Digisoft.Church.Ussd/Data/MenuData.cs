@@ -1,4 +1,5 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Menus;
+﻿using Dbank.Digisoft.Church.Ussd.Menus;
+using System.Collections.Generic;
 
 namespace Dbank.Digisoft.Church.Ussd {
     public class MenuData

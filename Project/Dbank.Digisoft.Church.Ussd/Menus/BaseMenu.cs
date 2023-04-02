@@ -1,4 +1,6 @@
-﻿namespace Dbank.Digisoft.Church.Ussd.Menus {
+﻿using System.Collections.Generic;
+
+namespace Dbank.Digisoft.Church.Ussd.Menus {
     public class BaseMenu
     {
         

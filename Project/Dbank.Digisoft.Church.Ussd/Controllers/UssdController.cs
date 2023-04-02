@@ -1,10 +1,15 @@
-using Dbank.Digisoft.PrediBet.Ussd.Helpers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
+using Dbank.Digisoft.Church.Ussd.Helpers;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Extensions;
+using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Dbank.Digisoft.Church.Ussd.Controllers {
     [Route("[controller]")]
@@ -12,7 +17,7 @@ namespace Dbank.Digisoft.Church.Ussd.Controllers {
         private readonly AppSettings _appSettings;
         private readonly GatesHelper _gate;
         private readonly UssdHandler _handler;
-        private readonly ILogger _logger;
+        private readonly ILogger<UssdController> _logger;
         private readonly ISessionServiceHelper _sessionHelper;
 
         public UssdController(UssdHandler handler, GatesHelper gate, ISessionServiceHelper sessionHelper,

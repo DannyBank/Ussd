@@ -1,6 +1,9 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd.Data.Extensions;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
 using Microsoft.Extensions.Options;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Dbank.Digisoft.Church.Ussd.Helpers {
     public class GatesHelper

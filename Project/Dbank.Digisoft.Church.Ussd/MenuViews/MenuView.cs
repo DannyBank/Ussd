@@ -1,4 +1,4 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Menus;
+﻿using Dbank.Digisoft.Church.Ussd.Menus;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
 using System;

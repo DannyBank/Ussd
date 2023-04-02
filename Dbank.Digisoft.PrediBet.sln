@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.PrediBet.Uss
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Church.Ussd", "Project\Dbank.Digisoft.Church.Ussd\Dbank.Digisoft.Church.Ussd.csproj", "{71C4E821-67E8-45A9-980F-83763189916A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Database", "Data\Dbank.Digisoft.Database\Dbank.Digisoft.Database.csproj", "{752A5026-34E5-4AE5-9936-F694AD98D60C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{71C4E821-67E8-45A9-980F-83763189916A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71C4E821-67E8-45A9-980F-83763189916A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71C4E821-67E8-45A9-980F-83763189916A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{3E473A00-C4A4-462A-A891-5455B4D3F28C} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
 		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA} = {63793439-B346-48BB-826E-528803466FFF}
 		{71C4E821-67E8-45A9-980F-83763189916A} = {63793439-B346-48BB-826E-528803466FFF}
+		{752A5026-34E5-4AE5-9936-F694AD98D60C} = {F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83A87E30-2107-4466-905E-91DCE91E3F37}

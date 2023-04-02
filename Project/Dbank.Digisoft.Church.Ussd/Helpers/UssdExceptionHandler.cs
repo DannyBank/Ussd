@@ -1,7 +1,10 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
 using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Threading.Tasks;
 
 namespace Dbank.Digisoft.Church.Ussd.Helpers {
     public class UssdExceptionHandler

@@ -1,0 +1,5 @@
+#Git Stuff
+.git
+.cache
+#Dotnet Stuff
+global.json

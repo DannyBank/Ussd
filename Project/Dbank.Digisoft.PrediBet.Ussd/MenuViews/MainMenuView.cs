@@ -1,11 +1,10 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Data.Models;
-using Dbank.Digisoft.PrediBet.Ussd.Menus;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+﻿using Dbank.Digisoft.Ussd;
+using Dbank.Digisoft.Ussd.Menus;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SmartFormat;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

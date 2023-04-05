@@ -1,8 +1,9 @@
-using Dbank.Digisoft.PrediBet.Ussd.Menus;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Handlers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Dbank.Digisoft.Ussd.Menus;
+using Dbank.Digisoft.Ussd;
+using Dbank.Digisoft.Ussd.SDK.Handlers;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;

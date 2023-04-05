@@ -1,10 +1,11 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd;
-using Dbank.Digisoft.PrediBet.Ussd.Data.Models;
-using Dbank.Digisoft.PrediBet.Ussd.Menus;
 using Dbank.Digisoft.PrediBet.Ussd.MenuViews;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Dbank.Digisoft.Ussd;
+using Dbank.Digisoft.Ussd.Data.Models;
+using Dbank.Digisoft.Ussd.Menus;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SmartFormat;
@@ -13,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.PrediBet.MenuViews {
+namespace Dbank.Digisoft.MenuViews {
     public class ViewPayMenuView : MenuView<ViewPayMenu> {
         private readonly ILogger<ViewPayMenuView> _logger;
         private readonly MenuData _menuData;
@@ -179,7 +180,7 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
 
         private async Task<MomoPaymentResult> ProcessMoMoPayment(List<Booking> selectedBooking,
             UssdMenuItem input, SessionInfo sessionData = null) {
-            return new MomoPaymentResult();
+            return new() { Success = true};
         }
 
         private async Task<List<Booking>> GetSelectedBooking(string selectedCode, SessionInfo sessionData) {

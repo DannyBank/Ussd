@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Dbank.Digisoft.PrediBet.Ussd.Menus
+namespace Dbank.Digisoft.Ussd.Menus
 {
     public class BaseMenu
     {

@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{63793439-B346-48BB-826E-528803466FFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engines", "Engines", "{A1D64F75-A455-4DB9-AFFB-F2200716B065}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.PrediBet.Ussd", "Project\Dbank.Digisoft.PrediBet.Ussd\Dbank.Digisoft.PrediBet.Ussd.csproj", "{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Database", "Data\Dbank.Digisoft.Database\Dbank.Digisoft.Database.csproj", "{752A5026-34E5-4AE5-9936-F694AD98D60C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Ussd.Data", "Data\Dbank.Digisoft.Ussd.Data\Dbank.Digisoft.Ussd.Data.csproj", "{774ACC83-ADB2-4B51-8EE9-447A17763036}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Ussd.SDK", "Data\Dbank.Digisoft.Ussd.Library\Dbank.Digisoft.Ussd.SDK.csproj", "{96C8C508-7E61-4E59-8EEE-F99C087A90B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Api", "Engines\Dbank.Digisoft.API\Dbank.Digisoft.Api.csproj", "{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Engine.Session", "Engines\Dbank.Digisoft.Ussd.Engine.Session\Dbank.Digisoft.Engine.Session.csproj", "{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752A5026-34E5-4AE5-9936-F694AD98D60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774ACC83-ADB2-4B51-8EE9-447A17763036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774ACC83-ADB2-4B51-8EE9-447A17763036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774ACC83-ADB2-4B51-8EE9-447A17763036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774ACC83-ADB2-4B51-8EE9-447A17763036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C8C508-7E61-4E59-8EEE-F99C087A90B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C8C508-7E61-4E59-8EEE-F99C087A90B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C8C508-7E61-4E59-8EEE-F99C087A90B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C8C508-7E61-4E59-8EEE-F99C087A90B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8287BBA3-9A76-45BB-B276-D49DA9BFDEFA} = {63793439-B346-48BB-826E-528803466FFF}
+		{752A5026-34E5-4AE5-9936-F694AD98D60C} = {F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}
+		{774ACC83-ADB2-4B51-8EE9-447A17763036} = {F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}
+		{96C8C508-7E61-4E59-8EEE-F99C087A90B8} = {F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}
+		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
+		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83A87E30-2107-4466-905E-91DCE91E3F37}
+	EndGlobalSection
+EndGlobal

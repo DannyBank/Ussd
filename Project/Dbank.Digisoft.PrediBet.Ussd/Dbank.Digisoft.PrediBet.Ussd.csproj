@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	<ProjectReference Include="..\..\Data\Dbank.Digisoft.PrediBet.Ussd.Data\Dbank.Digisoft.PrediBet.Ussd.Data.csproj" />
-    <ProjectReference Include="..\..\Data\Dbank.Digisoft.PrediBet.Ussd.Library\Dbank.Digisoft.PrediBet.Ussd.SDK.csproj" />
+	<ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Data\Dbank.Digisoft.Ussd.Data.csproj" />
+    <ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Library\Dbank.Digisoft.Ussd.SDK.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)|$(Platform)'!='Debug|AnyCPU'">
@@ -15,9 +15,6 @@
   <ItemGroup>
     <PackageReference Include="SmartFormat.NET" Version="3.1.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    </ItemGroup>
 
   <ItemGroup>
     <Content Update="appsettings.Production.json">

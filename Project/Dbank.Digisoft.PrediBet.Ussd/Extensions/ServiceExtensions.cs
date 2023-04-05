@@ -1,7 +1,7 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd.Helpers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Handlers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Helper;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Handlers;
+using Dbank.Digisoft.Ussd.SDK.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Dbank.Digisoft.PrediBet.Ussd.Extensions {

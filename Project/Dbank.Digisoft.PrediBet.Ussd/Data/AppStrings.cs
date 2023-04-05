@@ -1,4 +1,4 @@
-using Dbank.Digisoft.PrediBet.Ussd.Data.Models;
+using Dbank.Digisoft.Ussd.Data.Models;
 
 namespace Dbank.Digisoft.PrediBet.Ussd
 {

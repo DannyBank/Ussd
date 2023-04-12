@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Api", "Engin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Engine.Session", "Engines\Dbank.Digisoft.Ussd.Engine.Session\Dbank.Digisoft.Engine.Session.csproj", "{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Church.Ussd", "Project\Dbank.Digisoft.Church.Ussd\Dbank.Digisoft.Church.Ussd.csproj", "{42231EC0-CFA7-4800-A95A-E26E9CA10AA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42231EC0-CFA7-4800-A95A-E26E9CA10AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42231EC0-CFA7-4800-A95A-E26E9CA10AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42231EC0-CFA7-4800-A95A-E26E9CA10AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42231EC0-CFA7-4800-A95A-E26E9CA10AA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{96C8C508-7E61-4E59-8EEE-F99C087A90B8} = {F6B644DA-4E14-4B86-AB97-F4C6D7BF10C7}
 		{DFA81D74-9AD0-4603-AC56-3B4DBF64DE14} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
 		{35A2A38F-FF17-41C0-AD35-F6F56B0987DA} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
+		{42231EC0-CFA7-4800-A95A-E26E9CA10AA8} = {63793439-B346-48BB-826E-528803466FFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83A87E30-2107-4466-905E-91DCE91E3F37}

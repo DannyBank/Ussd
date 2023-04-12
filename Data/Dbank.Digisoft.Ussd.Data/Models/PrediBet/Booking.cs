@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.Ussd.Data.Models {
+namespace Dbank.Digisoft.Ussd.Data.Models.PrediBet {
     public class Booking {
         public long BookingId { get; set; }
         public string BookingName { get; set; }

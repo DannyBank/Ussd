@@ -22,8 +22,7 @@ namespace Dbank.Digisoft.Church.Ussd {
         public List<CurrencyOptionMenu> CurrencyOptionsMenu { get; set; }
         public List<DirectDialMenu> DirectDialMenu { get; set; }
         public List<ConfirmPurchaseMenu> ConfirmPurchaseMenu { get; set; }
-        public List<PredictionMenu> PredictionMenu { get; set; }
-        public List<ViewPayMenu> ViewPayMenu { get; set; }
-        public List<StartMenu> StartMenu { get; set; }
+        public List<SubscriberMenu> SubscriberMenu { get; set; }
+        public List<ChurchMenu> ChurchMenu { get; set; }
     }
 }

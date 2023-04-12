@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace Dbank.Digisoft.Church.Ussd.Menus {
+namespace Dbank.Digisoft.Church.Ussd.Menus
+{
     public class BaseMenu
     {
         
@@ -18,8 +19,13 @@ namespace Dbank.Digisoft.Church.Ussd.Menus {
             set { _nextMenuType = value; }
         }
         private string _nextMenuType;
+        public override string ToString() {
+            return $"Text: {Text}\tHandler: {Handler}";
+        }
     }
-    public class MainMenu: BaseMenu { }
+    public class MainMenu: BaseMenu {
+        public Digisoft.Ussd.Data.Models.ChurchModels.Church SelectedChurch { get; set; }
+    }
     public class OrderWithPaymentMenu : BaseMenu {
         public long ProductId { get; set; }
     }
@@ -38,15 +44,6 @@ namespace Dbank.Digisoft.Church.Ussd.Menus {
         public List<int> ProductCodes { get; set; }
     }
     public class ConfirmPurchaseMenu : BaseMenu {}
-    public class PredictionMenu : BaseMenu {
-        public long BookingId { get; set; }
-        public string PredictionValue { get; set; }
-    }
-    public class ViewPayMenu : BaseMenu {
-        public long BookingId { get; set; }
-        public string BookingCode { get; set; }
-        public string Prediction { get; set; }
-    }
-    public class StartMenu : BaseMenu {}
-
+    public class SubscriberMenu : BaseMenu {}
+    public class ChurchMenu : BaseMenu {}
 }

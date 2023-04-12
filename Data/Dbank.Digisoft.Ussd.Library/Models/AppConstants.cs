@@ -7,6 +7,7 @@ namespace Dbank.Digisoft.Ussd.SDK.Models;
 public struct AppConstants
 {
     public static readonly Func<SessionStage, string> MENUDATA = (SessionStage stage) => $"{stage.ToDescriptionString()}MENU";
+    public const string SELECTED_CHURCH = "selectedchurch";
     public const string SELECTED_MENUS = "Selections";
     public const string SELECTED_PAYMENT = "SelectedPayment";
     public const string TRANSFER_KEY = "isTransfer";
@@ -45,8 +46,6 @@ public struct AppConstants
     public const string ACTIVATION_TYPE= "ActivationType";
     public const string ACTIVATION_TYPE_ONE_OFF = "OneOff";
     public const string ACTIVATION_TYPE_AUTO_RENEWAL = "AutoRenewal";
-
-    public const string OTHER_SERVICECLASS = "CurrentMsisdnServiceClass";
 
     public const string SELECTED_BOOKING_CODE = "selectedbookingcode";
     public const string SELECTED_BOOKING_SET = "changedbookings";

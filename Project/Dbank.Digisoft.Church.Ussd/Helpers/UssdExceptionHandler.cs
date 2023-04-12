@@ -1,6 +1,6 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+﻿using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;

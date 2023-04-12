@@ -1,7 +1,9 @@
-﻿using Dbank.Digisoft.Church.Ussd.Helpers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Handlers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Helper;
+﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
+using Dbank.Digisoft.Church.Ussd.Common;
+using Dbank.Digisoft.Church.Ussd.Helpers;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Handlers;
+using Dbank.Digisoft.Ussd.SDK.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Dbank.Digisoft.Church.Ussd.Extensions {
@@ -15,6 +17,7 @@ namespace Dbank.Digisoft.Church.Ussd.Extensions {
             services.AddTransient<NavigationStack>();
             services.AddTransient<UssdExceptionHandler>();
             services.AddTransient<MenuHandler>();
+            services.AddTransient<IViewHelper, ViewHelper>();
             services.AddTransient<IApplicationDataHelper, ApplicationDataHelper>();
             services.Scan(scan =>
                 scan.FromEntryAssembly()

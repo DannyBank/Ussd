@@ -1,8 +1,8 @@
 using Dbank.Digisoft.Church.Ussd.Helpers;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Extensions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Dbank.Digisoft.Ussd.SDK.Extensions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

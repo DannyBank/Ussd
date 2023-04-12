@@ -1,5 +1,5 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Extensions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Extensions;
+using Dbank.Digisoft.Ussd.SDK.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

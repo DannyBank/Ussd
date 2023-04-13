@@ -7,6 +7,5 @@
         public string CallbackUrl { get; set; } = string.Empty;
         public string CancellationUrl { get; set; } = string.Empty;
         public string ReturnUrl { get; set; } = string.Empty;
-        public string Logo { get; set; } = string.Empty;
     }
 }

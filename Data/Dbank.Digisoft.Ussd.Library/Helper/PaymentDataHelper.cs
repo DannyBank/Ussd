@@ -17,20 +17,27 @@ namespace Dbank.Digisoft.Ussd.SDK.Helper {
             _logger = logger;
         }
 
-        public async Task<PaymentRequest?> CreatePayment(string msisdn, decimal amount, 
-            DateTime daterequested, long transId)
+        public async Task<PaymentRequest?> CreatePayment(
+            string msisdn, 
+            decimal amount, 
+            string title,
+            string description,
+            DateTime daterequested, 
+            long transId)
         {
             try
             {
                 var input = new {
-                    msisdn,
-                    transactionId = transId,
-                    amount,
-                    date = daterequested,
-                    status = "INIT"
+                    p_msisdn = msisdn,
+                    p_requesttitle = title,
+                    p_transactionid = transId,
+                    p_amount = amount,
+                    p_requestdate = daterequested,
+                    p_status = "INIT",
+                    p_requestdescription = description
                 };
                 using var connection = _db.CreateConnection("Payment");
-                var payment = await connection.QuerySingleOrDefaultAsync<PaymentRequest>("createpayment",
+                var payment = await connection.QuerySingleOrDefaultAsync<PaymentRequest>("create_payment_request",
                     input,
                     commandType: CommandType.StoredProcedure);
                 return payment;

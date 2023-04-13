@@ -3,7 +3,7 @@
         public string PaylinkId { get; set; } = null!;
         public string ClientReference { get; set; } = null!;
         public string PaylinkUrl { get; set; } = null!;
-        public int ExpiresAt { get; set; }
+        public long ExpiresAt { get; set; }
     }
 
     public class PaymentResponse {

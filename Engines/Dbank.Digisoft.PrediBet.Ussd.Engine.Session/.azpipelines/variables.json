@@ -1,6 +1,0 @@
-{
-  "ServiceName": "sessioneng",
-  "ServiceDescription": "LCC Session Service",
-  "Image": "acs.lcc.session",
-  "MemLimit": "300m"
-}

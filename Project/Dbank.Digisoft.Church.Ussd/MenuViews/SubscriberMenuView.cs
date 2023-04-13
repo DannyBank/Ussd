@@ -1,5 +1,6 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
 using Dbank.Digisoft.Church.Ussd.Menus;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Data.Extensions;
 using Dbank.Digisoft.Ussd.Data.Models;
 using Dbank.Digisoft.Ussd.Data.Models.ChurchModels;
@@ -17,19 +18,19 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly ChurchClient _dbClient;
         private readonly IViewHelper _viewHelper;
 
         public SubscriberMenuView(ILogger<SubscriberMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db, IViewHelper viewHelper) {
+            ChurchClient db, IViewHelper viewHelper) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
+            _dbClient = db;
             _viewHelper = viewHelper;
         }
 
@@ -44,14 +45,14 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
             if (string.IsNullOrWhiteSpace(subscriberName))
                 return new(_appStrings.InvalidInput) { RequiresInput = true };
 
-            var subscriber = await _appHelper.RecordSubscriber(new Subscriber {
+            var subscriber = await _dbClient.RecordSubscriber(new Subscriber {
                 Msisdn = sessionData.Msisdn,
                 Name = subscriberName
             });
             if (subscriber is null)
                 return new(_appStrings.RecordChurchSubscriberFailed);
 
-            var result = await _appHelper.RecordChurchSubscriber(
+            var result = await _dbClient.RecordSubscriberForChurch(
                 new SubscriberChurchModel {
                     SubscriberName = subscriberName,
                     Msisdn = sessionData.Msisdn.ToIntMsisdn(IntCode.GHA),

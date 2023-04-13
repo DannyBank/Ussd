@@ -1,6 +1,0 @@
-{
-  "Port": 28308,
-  "Replicas": 2,
-  "Env": "Testing",
-  "AppNetSubNet": "10.123.0.0/16"
-}

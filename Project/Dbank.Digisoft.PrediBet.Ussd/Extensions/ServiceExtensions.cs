@@ -1,7 +1,7 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd.Helpers;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Handlers;
-using Dbank.Digisoft.Ussd.SDK.Helper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Dbank.Digisoft.PrediBet.Ussd.Extensions {
@@ -15,7 +15,7 @@ namespace Dbank.Digisoft.PrediBet.Ussd.Extensions {
             services.AddTransient<NavigationStack>();
             services.AddTransient<UssdExceptionHandler>();
             services.AddTransient<MenuHandler>();
-            services.AddTransient<IApplicationDataHelper, ApplicationDataHelper>();
+            services.AddTransient<PrediBetClient>();
             services.Scan(scan =>
                 scan.FromEntryAssembly()
                     .AddClasses(c => c.AssignableTo<IMenuHandler>())

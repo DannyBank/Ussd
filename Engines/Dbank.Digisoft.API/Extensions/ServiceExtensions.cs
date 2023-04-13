@@ -14,7 +14,7 @@ namespace Dbank.Digisoft.Api.Extensions
     {
         public static IServiceCollection AddDataServices(this IServiceCollection services) {
             services.AddTransient<IDbHelper, DbHelper>();
-            services.AddTransient<IApplicationDataHelper, ApplicationDataHelper>();
+            services.AddTransient<ChurchDataHelper>();
             return services;
         }
 

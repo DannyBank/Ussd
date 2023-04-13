@@ -1,4 +1,4 @@
-﻿using Dbank.Digisoft.Ussd;
+﻿using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Menus;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Models;
@@ -15,18 +15,18 @@ namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly PrediBetClient _dbClient;
 
         public MainMenuView(ILogger<MainMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db) {
+            PrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
+            _dbClient = db;
         }
 
         [Handler("Index")]
@@ -56,7 +56,7 @@ namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews {
         [Handler("DisplayBookedSets")]
         private async Task<MenuCollection> DisplayBookedSets(UssdMenuItem input, SessionInfo sessionData = null) {
             var menuItems = new List<UssdMenuItem>();
-            var bookingList = await _appHelper.GetBookings();
+            var bookingList = await _dbClient.GetBookings();
             if (bookingList == null || bookingList.Count == 0)
                 return new(_appStrings.NoPredictionsToday);
 

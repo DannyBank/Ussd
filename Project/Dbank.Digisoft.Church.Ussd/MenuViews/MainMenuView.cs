@@ -1,5 +1,6 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
 using Dbank.Digisoft.Church.Ussd.Menus;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Models;
 using Dbank.Digisoft.Ussd.SDK.Session.Models;
@@ -16,27 +17,27 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly ChurchClient _dbClient;
         private readonly IViewHelper _viewHelper;
 
         public MainMenuView(ILogger<MainMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db, IViewHelper helper) {
+            ChurchClient db, IViewHelper helper) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
+            _dbClient = db;
             _viewHelper = helper;
         }
 
         [Handler("Index")]
         private async Task<MenuCollection> Index(UssdMenuItem input, SessionInfo sessionData = null) {
-            var subscriberChurches = await _appHelper.GetChurchesBySubscriber(sessionData.Msisdn);
+            var subscriberChurches = await _dbClient.GetChurchesBySubscriber(sessionData.Msisdn) ?? new();
             if (subscriberChurches.Count == 1) {
-                var subscriber = await _appHelper.GetSubscriberByMsisdn(sessionData.Msisdn);
+                var subscriber = await _dbClient.GetSubscriberByMsisdn(sessionData.Msisdn);
                 var churchName = subscriberChurches.FirstOrDefault()?.ChurchName ?? "Church name missing";
 
                 var data = _menuData.ChurchMenu.Select(r => new UssdMenuItem {
@@ -51,7 +52,7 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
                 return new(menuItems, Smart.Format(header, subscriber.Name, churchName));
             }
             else {
-                var churchList = await _appHelper.GetChurches();
+                var churchList = await _dbClient.GetAllChurches();
                 if (!churchList.Any(r => r.ChurchId > 0)) {
                     _logger.LogInformation("Churches have not been uploaded yet");
                     return new(_appStrings.GenericError);

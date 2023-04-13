@@ -13,7 +13,7 @@ namespace Dbank.Digisoft.Ussd.SDK.Extensions
         {
             services.AddDataServices();
             services.AddTransient<ISessionDataHelper, SessionDataHelper>();
-            services.AddTransient<IApplicationDataHelper, ApplicationDataHelper>();
+            services.AddTransient<ChurchDataHelper>();
             services.AddTransient<SessionDataHelper>();
             services.AddHttpClient<ISessionServiceHelper, SessionServiceHelper>();
             return services;

@@ -1,7 +1,9 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd;
 using Dbank.Digisoft.PrediBet.Ussd.MenuViews;
 using Dbank.Digisoft.Ussd;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Data.Models;
+using Dbank.Digisoft.Ussd.Data.Models.PrediBet;
 using Dbank.Digisoft.Ussd.Menus;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Models;
@@ -20,13 +22,13 @@ namespace Dbank.Digisoft.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly PrediBetClient _appHelper;
 
         public ViewPayMenuView(ILogger<ViewPayMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db) {
+            PrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
@@ -41,7 +43,7 @@ namespace Dbank.Digisoft.MenuViews {
             if (menuData == null)
                 return new MenuCollection(_appStrings.InvalidBookingCode);
             sessionData.StoreSessionData(AppConstants.SELECTED_BOOKING_CODE, menuData.Text);
-            var bookingSet = await _appHelper.GetBookingByCode(menuData.Text);
+            var bookingSet = await _appHelper.GetBookingsByCode(menuData.Text);
             sessionData.StoreSessionData(AppConstants.SELECTED_BOOKING_SET, bookingSet);
 
             //Display View/Pay menu
@@ -67,7 +69,7 @@ namespace Dbank.Digisoft.MenuViews {
             var bookingCode = menuData.BookingCode 
                 ?? sessionData.GetSessionData<string>(AppConstants.SELECTED_BOOKING_CODE);
             var bookings = sessionData.GetSessionData<List<Booking>>(AppConstants.SELECTED_BOOKING_SET)
-                ?? await _appHelper.GetBookingByCode(bookingCode);
+                ?? await _appHelper.GetBookingsByCode(bookingCode);
             if (bookings == null) return new(_appStrings.InvalidBookingCode);
             if (bookings.Count == 0) return new(_appStrings.NoBookingsForCode);
 
@@ -153,7 +155,7 @@ namespace Dbank.Digisoft.MenuViews {
             var bookingCode = sessionData.GetSessionData<string>(AppConstants.SELECTED_BOOKING_CODE);
 
             var bookingSet = sessionData.GetSessionData<List<Booking>>(AppConstants.SELECTED_BOOKING_SET)
-                ?? await _appHelper.GetBookingByCode(bookingCode);
+                ?? await _appHelper.GetBookingsByCode(bookingCode);
 
             //replace current predicition with new one
             bookingSet.Find(r => r.BookingId == bookingId).Prediction = menuData.Prediction;

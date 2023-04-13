@@ -33,7 +33,7 @@ namespace Dbank.Digisoft.Api.BackgroundService
             _logger = loggerFactory;
             _appSettings = appSettingsOptions.CurrentValue;
             appSettingsOptions.OnChange(appSettings => { _appSettings = appSettings; });
-            _appHelper = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<ApplicationDataHelper>();
+            _appHelper = null;//serviceProvider.CreateScope().ServiceProvider.GetRequiredService<ChurchDataHelper>();
         }
 
         public Task StartAsync(CancellationToken cancellationToken)

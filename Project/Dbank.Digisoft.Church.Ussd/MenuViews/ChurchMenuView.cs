@@ -17,19 +17,17 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
         private readonly IViewHelper _viewHelper;
 
         public ChurchMenuView(ILogger<ChurchMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db, IViewHelper helper) {
+            IViewHelper helper) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
             _viewHelper = helper;
         }
 

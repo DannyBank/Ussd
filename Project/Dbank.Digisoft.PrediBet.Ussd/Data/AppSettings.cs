@@ -1,6 +1,6 @@
 using Dbank.Digisoft.Ussd.Data.Models;
 
-namespace Dbank.Digisoft.Ussd
+namespace Dbank.Digisoft.PrediBet.Ussd
 {
     public class AppSettings:AppOptions
     {

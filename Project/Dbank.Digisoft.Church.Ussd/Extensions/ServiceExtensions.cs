@@ -1,6 +1,7 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
 using Dbank.Digisoft.Church.Ussd.Common;
 using Dbank.Digisoft.Church.Ussd.Helpers;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Handlers;
 using Dbank.Digisoft.Ussd.SDK.Helper;
@@ -18,7 +19,8 @@ namespace Dbank.Digisoft.Church.Ussd.Extensions {
             services.AddTransient<UssdExceptionHandler>();
             services.AddTransient<MenuHandler>();
             services.AddTransient<IViewHelper, ViewHelper>();
-            services.AddTransient<IApplicationDataHelper, ApplicationDataHelper>();
+            services.AddTransient<ChurchDataHelper>();
+            services.AddTransient<ChurchClient>();
             services.Scan(scan =>
                 scan.FromEntryAssembly()
                     .AddClasses(c => c.AssignableTo<IMenuHandler>())

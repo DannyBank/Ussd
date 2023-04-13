@@ -1,6 +1,7 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd;
 using Dbank.Digisoft.PrediBet.Ussd.MenuViews;
 using Dbank.Digisoft.Ussd;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Menus;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Session.Models;
@@ -16,24 +17,24 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly PrediBetClient _dbClient;
 
         public PredictionMenuView(ILogger<PredictionMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db) {
+            PrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
+            _dbClient = db;
         }
 
         [Handler("Index")]
         private async Task<MenuCollection> Index(UssdMenuItem input, SessionInfo sessionData = null) {
             var enteredCode = sessionData.CurrentInput;
-            var booking = await _appHelper.GetBookingByCode(enteredCode);
+            var booking = await _dbClient.GetBookingsByCode(enteredCode);
             if (booking == null || booking.Count == 0)
                 return new("No booking content was found for this code") { 
                     RequiresInput = true,

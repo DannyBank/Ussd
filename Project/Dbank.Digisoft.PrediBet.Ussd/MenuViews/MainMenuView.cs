@@ -1,4 +1,4 @@
-﻿using Dbank.Digisoft.Ussd.Data.Clients;
+﻿using Dbank.Digisoft.Ussd.Data.Abstractions;
 using Dbank.Digisoft.Ussd.Menus;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Models;
@@ -9,19 +9,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews {
+namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews
+{
     public class MainMenuView : MenuView<MainMenu> {
         private readonly ILogger<MainMenuView> _logger;
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly PrediBetClient _dbClient;
+        private readonly IPrediBetClient _dbClient;
 
         public MainMenuView(ILogger<MainMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            PrediBetClient db) {
+            IPrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;

@@ -1,7 +1,6 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd;
 using Dbank.Digisoft.PrediBet.Ussd.MenuViews;
-using Dbank.Digisoft.Ussd;
-using Dbank.Digisoft.Ussd.Data.Clients;
+using Dbank.Digisoft.Ussd.Data.Abstractions;
 using Dbank.Digisoft.Ussd.Data.Models;
 using Dbank.Digisoft.Ussd.Data.Models.PrediBet;
 using Dbank.Digisoft.Ussd.Menus;
@@ -11,24 +10,24 @@ using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SmartFormat;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.MenuViews {
+namespace Dbank.Digisoft.MenuViews
+{
     public class ViewPayMenuView : MenuView<ViewPayMenu> {
         private readonly ILogger<ViewPayMenuView> _logger;
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly PrediBetClient _appHelper;
+        private readonly IPrediBetClient _appHelper;
 
         public ViewPayMenuView(ILogger<ViewPayMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            PrediBetClient db) {
+            IPrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;

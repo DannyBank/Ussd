@@ -1,6 +1,6 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
 using Dbank.Digisoft.Church.Ussd.Menus;
-using Dbank.Digisoft.Ussd.Data.Clients;
+using Dbank.Digisoft.Ussd.Data.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Models;
 using Dbank.Digisoft.Ussd.SDK.Session.Models;
@@ -17,14 +17,14 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly ChurchClient _dbClient;
+        private readonly IChurchClient _dbClient;
         private readonly IViewHelper _viewHelper;
 
         public MainMenuView(ILogger<MainMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            ChurchClient db, IViewHelper helper) {
+            IChurchClient db, IViewHelper helper) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;

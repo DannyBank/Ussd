@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Engine.Data"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Engine.Payment", "Engines\Dbank.Digisoft.Engine.Payment\Dbank.Digisoft.Engine.Payment.csproj", "{35FEC8ED-9281-433F-88E0-20833764C1D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dbank.Digisoft.Church.Web", "Project\Dbank.Digisoft.Church.Web\Dbank.Digisoft.Church.Web.csproj", "{A819909E-46EB-4984-A0D5-9DD3BACB9D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Church.Web", "Project\Dbank.Digisoft.Church.Web\Dbank.Digisoft.Church.Web.csproj", "{A819909E-46EB-4984-A0D5-9DD3BACB9D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dbank.Digisoft.Engine.Authorization", "Engines\Dbank.Digisoft.Engine.Authorization\Dbank.Digisoft.Engine.Authorization.csproj", "{AB2768AA-8150-49E8-91AF-CE04F803BCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Engine.Authorization", "Engines\Dbank.Digisoft.Engine.Authorization\Dbank.Digisoft.Engine.Authorization.csproj", "{AB2768AA-8150-49E8-91AF-CE04F803BCBE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dbank.Digisoft.Api", "Engines\Dbank.Digisoft.API\Dbank.Digisoft.Api.csproj", "{93B41C5F-6B48-48E6-9971-20090CD92DA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dbank.Digisoft.PrediBet.Web", "Project\Dbank.Digisoft.PrediBet.Web\Dbank.Digisoft.PrediBet.Web.csproj", "{D62FCD6B-6FB2-4F80-8E39-21971A6AF165}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{93B41C5F-6B48-48E6-9971-20090CD92DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B41C5F-6B48-48E6-9971-20090CD92DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B41C5F-6B48-48E6-9971-20090CD92DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62FCD6B-6FB2-4F80-8E39-21971A6AF165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62FCD6B-6FB2-4F80-8E39-21971A6AF165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62FCD6B-6FB2-4F80-8E39-21971A6AF165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62FCD6B-6FB2-4F80-8E39-21971A6AF165}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{A819909E-46EB-4984-A0D5-9DD3BACB9D99} = {63793439-B346-48BB-826E-528803466FFF}
 		{AB2768AA-8150-49E8-91AF-CE04F803BCBE} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
 		{93B41C5F-6B48-48E6-9971-20090CD92DA8} = {A1D64F75-A455-4DB9-AFFB-F2200716B065}
+		{D62FCD6B-6FB2-4F80-8E39-21971A6AF165} = {63793439-B346-48BB-826E-528803466FFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {83A87E30-2107-4466-905E-91DCE91E3F37}

@@ -1,5 +1,6 @@
 ﻿using Dbank.Digisoft.Church.Ussd.Abstractions;
 using Dbank.Digisoft.Church.Ussd.Menus;
+using Dbank.Digisoft.Ussd.Data.Abstractions;
 using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Data.Extensions;
 using Dbank.Digisoft.Ussd.Data.Models;
@@ -18,7 +19,7 @@ namespace Dbank.Digisoft.Church.Ussd.MenuViews {
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly ChurchClient _dbClient;
+        private readonly IChurchClient _dbClient;
         private readonly IViewHelper _viewHelper;
 
         public SubscriberMenuView(ILogger<SubscriberMenuView> logger,

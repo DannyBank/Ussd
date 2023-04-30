@@ -1,13 +1,63 @@
 using Dbank.Digisoft.Ussd.SDK.Models;
 using Dbank.Digisoft.Ussd.SDK.Session.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Serilog;
+using Serilog.Exceptions;
+using Serilog.Exceptions.Core;
+using System.Diagnostics;
 
 namespace Dbank.Digisoft.Ussd.SDK.Extensions;
 
 public static class UssdExtensions
 {
+    public static IWebHostBuilder AddSerilogLogging(this IWebHostBuilder webHost)
+    {
+#pragma warning disable CS0618
+        return webHost.UseSerilog((context, configuration) =>
+        {
+            if (!context.HostingEnvironment.IsProduction())
+                Serilog.Debugging.SelfLog.Enable(msg =>
+                {
+                    Console.WriteLine($"Serilog:: {msg}");
+                    Debug.WriteLine(msg);
+                });
+            configuration.ReadFrom.Configuration(context.Configuration.GetSection("Logging"))
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("App", context.Configuration.GetValue<string>("App:AppId"))
+                .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
+                .Destructure.ByTransformingWhere(c => c.Name == "StatusCode", (int k) => k.ToString())
+                .Enrich.WithExceptionDetails(new DestructuringOptionsBuilder().WithDestructuringDepth(3)
+                    .WithRootName("ErrorDetails"));
+        });
+#pragma warning restore CS0618
+
+    }
+
+    public static IHostBuilder AddSerilogLogging(this IHostBuilder host)
+    {
+        return host.UseSerilog((context, configuration) =>
+        {
+            if (!context.HostingEnvironment.IsProduction())
+                Serilog.Debugging.SelfLog.Enable(msg =>
+                {
+                    Console.WriteLine($"Serilog:: {msg}");
+                    Debug.WriteLine(msg);
+                });
+            configuration.ReadFrom.Configuration(context.Configuration.GetSection("Logging"))
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("App", context.Configuration.GetValue<string>("App:AppId"))
+                .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
+                .Destructure.ByTransformingWhere(c => c.Name == "StatusCode", (int k) => k.ToString())
+                .Enrich.WithExceptionDetails(new DestructuringOptionsBuilder().WithDestructuringDepth(3)
+                    .WithRootName("ErrorDetails"));
+        });
+    }
+
     public static UssdMenu CreateUssdMenu(this MenuCollection menuItems) => menuItems.CreateUssdMenu(",");
 
     public static UssdMenu CreateUssdMenu(this MenuCollection menuitems, string seperator) =>

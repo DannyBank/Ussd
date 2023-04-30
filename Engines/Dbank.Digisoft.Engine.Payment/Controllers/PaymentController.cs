@@ -9,6 +9,7 @@ namespace Dbank.Digisoft.Engine.Payment.Controllers {
     [ApiController]
     public class PaymentController : ControllerBase {
         private HubtelHelper _hubtelHelper;
+        private PaystackHelper _paystackHelper;
         private PaymentDataHelper _paymentHelper;
         private ILogger<PaymentController> _logger;
 
@@ -19,7 +20,7 @@ namespace Dbank.Digisoft.Engine.Payment.Controllers {
             _paymentHelper = paymentHelper;
         }
 
-        [HttpPost("[action]")]
+        [HttpPost("hubtel/[action]")]
         public async Task<PaymentResponse?> RequestSingle([FromBody] PaymentRequestModel model) {
             try {
                 if (!ModelState.IsValid) return null!;
@@ -37,7 +38,21 @@ namespace Dbank.Digisoft.Engine.Payment.Controllers {
                 return await _hubtelHelper.RequestSingle(request, model.Msisdn);
             }
             catch (Exception ex) {
-                _logger.LogError(ex, "An error occurred in endpoint {Method}", nameof(Single));
+                _logger.LogError(ex, "An error occurred in endpoint {Method}", nameof(RequestSingle));
+                return null;
+            }
+        }
+
+        [HttpPost("paystack/[action]")]
+        public async Task<PaymentResponse?> PaystackRequest([FromBody] PaymentRequestModel model) {
+            try {
+                if (!ModelState.IsValid) return null!;
+                _ = model ?? throw new ArgumentNullException(nameof(model));
+
+
+            }
+            catch (Exception ex) {
+                _logger.LogError(ex, "An error occurred in endpoint {Method}", nameof(PaystackRequest));
                 return null;
             }
         }

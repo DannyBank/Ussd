@@ -3,7 +3,6 @@ using Dbank.Digisoft.Api.Clients;
 using Dbank.Digisoft.Api.Services;
 using Dbank.Digisoft.Ussd.Data.Abstractions;
 using Dbank.Digisoft.Ussd.Data.Models;
-using Dbank.Digisoft.Ussd.SDK.Abstractions;
 using Dbank.Digisoft.Ussd.SDK.Helper;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;

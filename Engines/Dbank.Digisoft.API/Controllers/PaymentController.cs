@@ -1,5 +1,6 @@
 ﻿using Dbank.Digisoft.Api.Abstractions;
 using Dbank.Digisoft.Api.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace Dbank.Digisoft.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PaymentController : ControllerBase
     {
         private readonly IPaymentClient _payClient;

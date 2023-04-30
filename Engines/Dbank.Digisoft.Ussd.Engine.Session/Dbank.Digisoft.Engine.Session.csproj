@@ -15,16 +15,12 @@
         <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
         <PackageReference Include="ncrontab" Version="3.3.1" />
         <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
-    </ItemGroup>
-  
-  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Library\Dbank.Digisoft.Ussd.SDK.csproj" />
-  </ItemGroup>  
+		<PackageReference Include="Dbank.Digisoft.Ussd.SDK" Version="1.0.0" />
+	</ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)|$(Platform)'!='Debug|AnyCPU'">
-    <PackageReference Include="Dbank.Digisoft.Ussd.SDK" Version="1.0.0" />
-  </ItemGroup>
-
+	<ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Library\Dbank.Digisoft.Ussd.SDK.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
         <Content Update="appsettings.Development.json">

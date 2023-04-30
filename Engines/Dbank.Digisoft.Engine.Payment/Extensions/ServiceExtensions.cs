@@ -9,6 +9,7 @@ namespace Dbank.Digisoft.Engine.Data.Payment {
             services.AddTransient<DbHelper>();
             services.AddTransient<PaymentDataHelper>();
             services.AddTransient<HubtelHelper>();
+            services.AddTransient<PaystackHelper>();
             return services;
         }
     }

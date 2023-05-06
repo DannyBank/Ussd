@@ -2,16 +2,20 @@
 using Dbank.Digisoft.Config.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Dbank.Digisoft.Config.Serivces
 {
     public class FileHelper: IFileHelper
     {
         private readonly AppSettings _settings;
+        private readonly ILogger<FileHelper> _logger;
 
-        public FileHelper(IOptionsSnapshot<AppSettings> settings)
+        public FileHelper(IOptionsSnapshot<AppSettings> settings,
+            ILogger<FileHelper> logger)
         {
             _settings = settings.Value;
+            _logger = logger;
         }
 
         public (bool, DirectoryInfo?) CreateDirectory(string path, string dirName)
@@ -81,13 +85,43 @@ namespace Dbank.Digisoft.Config.Serivces
             return false;
         }
 
-        public (bool Success, string? Type, Dictionary<string, string>? Contents) 
-            GetContents(string path)
+        public async Task<List<JObject>?> GetContents(Dictionary<string, string>? filePaths)
         {
-            if (File.Exists(path))
-                return GetJsonFileContents(path);
-            else if (Directory.Exists(path))
-                return GetDirectoryContents(path);
+            if (filePaths == null || filePaths.Count == 0) return null;
+
+            var jsonList = new List<JObject>();
+            foreach (var path in filePaths)
+            {
+                var keyValues = await GetKeyValuesFromPath(path.Value);
+                if (keyValues == null || string.IsNullOrWhiteSpace(keyValues))
+                    continue;
+                var kvJson = JObject.Parse(keyValues);
+                jsonList.Add(kvJson);
+            }
+            return jsonList;
+        }
+
+        public async Task<string?> GetKeyValuesFromPath(string path)
+        {
+            try
+            {
+                using StreamReader r = new (path);
+                return await r.ReadToEndAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred processing {Method}", nameof(GetKeyValuesFromPath));
+                return string.Empty;
+            }
+        }
+
+        public (bool Success, string? Type, Dictionary<string, string>? DirectoriesAndFiles) GetDirectoriesAndFiles(
+            string environment)
+        {
+            if (File.Exists(environment))
+                return GetJsonFileContents(environment);
+            else if (Directory.Exists(environment))
+                return GetDirectoryContents(environment);
             else
                 return (false, null, null);
         }

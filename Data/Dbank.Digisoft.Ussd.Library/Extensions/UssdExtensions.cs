@@ -16,27 +16,13 @@ namespace Dbank.Digisoft.Ussd.SDK.Extensions;
 public static class UssdExtensions
 {
     public static IWebHostBuilder AddSerilogLogging(this IWebHostBuilder webHost)
-    {
+    =>
 #pragma warning disable CS0618
-        return webHost.UseSerilog((context, configuration) =>
-        {
-            if (!context.HostingEnvironment.IsProduction())
-                Serilog.Debugging.SelfLog.Enable(msg =>
-                {
-                    Console.WriteLine($"Serilog:: {msg}");
-                    Debug.WriteLine(msg);
-                });
-            configuration.ReadFrom.Configuration(context.Configuration.GetSection("Logging"))
-                .Enrich.FromLogContext()
-                .Enrich.WithProperty("App", context.Configuration.GetValue<string>("App:AppId"))
-                .Enrich.WithProperty("Environment", context.HostingEnvironment.EnvironmentName)
-                .Destructure.ByTransformingWhere(c => c.Name == "StatusCode", (int k) => k.ToString())
-                .Enrich.WithExceptionDetails(new DestructuringOptionsBuilder().WithDestructuringDepth(3)
-                    .WithRootName("ErrorDetails"));
-        });
+        webHost.UseSerilog((hostingContext, loggerConfig) => loggerConfig
+                                            .ReadFrom.Configuration(hostingContext.Configuration)
+                                            .Enrich.FromLogContext(), writeToProviders: true);
 #pragma warning restore CS0618
-
-    }
+    
 
     public static IHostBuilder AddSerilogLogging(this IHostBuilder host)
     {

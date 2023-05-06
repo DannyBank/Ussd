@@ -23,7 +23,7 @@ namespace Dbank.Digisoft.Config.Controllers
             try
             {
                 if (!ModelState.IsValid) return null!;
-                var result = await _kvHelper.GetContent(key);
+                var result = await _kvHelper.GetJsonContent(key);
                 return JsonConvert.SerializeObject(result, Formatting.Indented);
             }
             catch (Exception ex)

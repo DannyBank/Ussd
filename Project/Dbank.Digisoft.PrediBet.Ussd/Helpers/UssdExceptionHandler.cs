@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Dbank.Digisoft.Ussd.SDK.Session.Models;
-using Dbank.Digisoft.Ussd.SDK.Models;
-using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
-using Dbank.Digisoft.Ussd;
+using System;
 
 namespace Dbank.Digisoft.PrediBet.Ussd.Helpers
 {
@@ -29,11 +27,9 @@ namespace Dbank.Digisoft.PrediBet.Ussd.Helpers
 
         }
 
-        public async Task<UssdMenu> ExceptionHandler(string MethodName, SessionInfo session, Exception e)
+        public UssdMenu ExceptionHandler(string MethodName, SessionInfo session, Exception e)
         {
-            _logger.LogError(e, "Error Occured Executing {MethodName} for {Msisdn}", MethodName, session?.Msisdn ?? "");
-
-           
+            _logger.LogError(e, "Error Occured Executing {MethodName} for {Msisdn}", MethodName, session?.Msisdn ?? ""); 
             return new UssdMenu
             {
                 Header = _appStrings.GenericError,

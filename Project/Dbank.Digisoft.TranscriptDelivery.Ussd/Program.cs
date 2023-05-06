@@ -1,3 +1,4 @@
+using Dbank.Digisoft.Ussd.SDK.Extensions;
 using Microsoft.AspNetCore;
 
 namespace Dbank.Digisoft.TranscriptDelivery.Ussd {
@@ -12,8 +13,9 @@ namespace Dbank.Digisoft.TranscriptDelivery.Ussd {
         {
            
                return WebHost.CreateDefaultBuilder(args)
-               .UseStartup<Startup>()
-               .Build();
+                            .AddSerilogLogging()
+                            .UseStartup<Startup>()
+                            .Build();
         }
     }
 }

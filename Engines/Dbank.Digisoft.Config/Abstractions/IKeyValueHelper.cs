@@ -1,7 +1,9 @@
-﻿namespace Dbank.Digisoft.Config.Abstractions
+﻿using Newtonsoft.Json.Linq;
+
+namespace Dbank.Digisoft.Config.Abstractions
 {
     public interface IKeyValueHelper
     {
-        Task<Dictionary<string, string>?> GetContent(string key);
+        Task<JObject?> GetJsonContent(string key);
     }
 }

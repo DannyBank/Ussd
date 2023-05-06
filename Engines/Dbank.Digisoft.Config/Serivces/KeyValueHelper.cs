@@ -1,4 +1,5 @@
 ﻿using Dbank.Digisoft.Config.Abstractions;
+using Newtonsoft.Json.Linq;
 
 namespace Dbank.Digisoft.Config.Serivces
 {
@@ -15,19 +16,35 @@ namespace Dbank.Digisoft.Config.Serivces
             _kvUrl = Path.Combine(Environment.CurrentDirectory, "bin", "Debug", "net7.0", "KeyValues");
         }
 
-        public async Task<Dictionary<string, string>?> GetContent(string key)
+        public async Task<JObject?> GetJsonContent(string key)
         {
             try
             {
-                var path = Path.Combine(_kvUrl, key);
-                var contents = _fileHelper.GetContents(path);
-                return await Task.FromResult(contents.Contents);
+                var environment = Path.Combine(_kvUrl, key);
+                var paths = _fileHelper.GetDirectoriesAndFiles(environment);
+                var jObjects = await _fileHelper.GetContents(paths!.DirectoriesAndFiles);
+                return MergeJsonObjects(jObjects);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred processing {Method}", nameof(GetContent));
+                _logger.LogError(ex, "An error occurred processing {Method}", nameof(GetJsonContent));
                 return null;
             }
+        }
+
+        private static JObject MergeJsonObjects(List<JObject> objects)
+        {
+            JObject json = new ();
+            foreach (JObject JSONObject in objects)
+            {
+                foreach (var property in JSONObject)
+                {
+                    string name = property.Key;
+                    JToken value = property.Value;
+                    json.Add(name, value);
+                }
+            }
+            return json;
         }
     }
 }

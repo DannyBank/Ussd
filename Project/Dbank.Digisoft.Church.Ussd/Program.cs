@@ -1,3 +1,4 @@
+using Dbank.Digisoft.Ussd.SDK.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
@@ -12,8 +13,9 @@ namespace Dbank.Digisoft.Church.Ussd {
         public static IWebHost CreateHostBuilder(string[] args)
         {
                return WebHost.CreateDefaultBuilder(args)
-               .UseStartup<Startup>()
-               .Build();
+                            .AddSerilogLogging()
+                            .UseStartup<Startup>()
+                            .Build();
         }
     }
 }

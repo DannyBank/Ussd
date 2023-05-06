@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <Folder Include="KeyValues\Development\Church\" />
+    <Folder Include="KeyValues\Development\PrediBet\" />
   </ItemGroup>
 
 </Project>

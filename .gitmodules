@@ -1,0 +1,18 @@
+[submodule "Data/GreatIdeas.Ussd.Library"]
+	path = Data/GreatIdeas.Ussd.Library
+	url = https://KojoLive@dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.Ussd.Library
+[submodule "Data/GreatIdeas.Ussd.Data"]
+	path = Data/GreatIdeas.Ussd.Data
+	url = https://KojoLive@dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.Ussd.Data
+[submodule "Project/GreatIdeas.Ussd"]
+	path = Project/GreatIdeas.Ussd
+	url = https://KojoLive@dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.Ussd
+[submodule "Engines/GreatIdeas.Ussd.Engine.Session"]
+	path = Engines/GreatIdeas.Ussd.Engine.Session
+	url = https://KojoLive@dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.Ussd.Engine.Session
+[submodule "src/Engines"]
+	path = src/Engines
+	url = https://dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.API
+[submodule "Engines/GreatIdeas.API"]
+	path = Engines/GreatIdeas.API
+	url = https://dev.azure.com/KojoLive/GreatIdeas-Ussd-Project/_git/GreatIdeas.API

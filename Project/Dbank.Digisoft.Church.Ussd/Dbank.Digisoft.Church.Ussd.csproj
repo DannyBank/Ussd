@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Data\Dbank.Digisoft.Ussd.Data.csproj" />
+		<ProjectReference Include="..\..\Data\Dbank.Digisoft.Ussd.Library\Dbank.Digisoft.Ussd.SDK.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)'!='Debug|AnyCPU'">
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SmartFormat.NET" Version="3.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Update="appsettings.Production.json">
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+	</ItemGroup>
+
+</Project>

@@ -3,13 +3,17 @@ using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Serilog;
 using Serilog.Exceptions;
 using Serilog.Exceptions.Core;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Dbank.Digisoft.Ussd.SDK.Extensions;
 
@@ -22,7 +26,7 @@ public static class UssdExtensions
                                             .ReadFrom.Configuration(hostingContext.Configuration)
                                             .Enrich.FromLogContext(), writeToProviders: true);
 #pragma warning restore CS0618
-    
+
 
     public static IHostBuilder AddSerilogLogging(this IHostBuilder host)
     {
@@ -85,5 +89,45 @@ public static class UssdExtensions
         }
 
         return output;
+    }
+
+    public static IWebHostBuilder AddCustomKeyValues(this IWebHostBuilder builder)
+    {
+        try
+        {
+            var app = Environment.GetEnvironmentVariable("APPNAME");
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var json = GetJsonConfig(app!,env!).Result;
+            return builder.ConfigureAppConfiguration(
+                (WebHostBuilderContext ctx, IConfigurationBuilder config) => { 
+                    config.AddJsonStream(new MemoryStream(Encoding.ASCII.GetBytes(json!)));
+                });
+        }
+        catch (Exception ex)
+        {
+            Console.Write(ex.ToString());
+            return builder;
+        }
+    }
+
+    private static async Task<string?> GetJsonConfig(string app, string env)
+    {
+        try
+        {
+            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (env == null) throw new ArgumentNullException(nameof(app));
+
+            using var httpClient = new HttpClient()
+            {
+                BaseAddress = new Uri("http://localhost:5266")
+            };
+            var response = await httpClient.GetAsync(new Uri($"api/kv/get/{app}/{env}", UriKind.Relative));
+            if (!response.IsSuccessStatusCode) return null;
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

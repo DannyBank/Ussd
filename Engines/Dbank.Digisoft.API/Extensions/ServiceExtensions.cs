@@ -2,6 +2,7 @@
 using Dbank.Digisoft.Api.Clients;
 using Dbank.Digisoft.Api.Services;
 using Dbank.Digisoft.Ussd.Data.Abstractions;
+using Dbank.Digisoft.Ussd.Data.Clients;
 using Dbank.Digisoft.Ussd.Data.Models;
 using Dbank.Digisoft.Ussd.SDK.Helper;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,7 @@ namespace Dbank.Digisoft.Api.Extensions
             services.AddTransient<IHubtelService, HubtelService>();
             services.AddTransient<IPaymentClient, PaymentClient>();
             services.AddTransient<ISmsClient, SmsClient>();
+            services.AddTransient<IChurchClient, ChurchClient>();
             return services;
         }
     }

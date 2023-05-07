@@ -22,7 +22,7 @@ namespace Dbank.Digisoft.Api
             services.AddAuthentication("OAuth2")
                     .AddIdentityServerAuthentication("OAuth2", options => 
                     {
-                        options.ApiName = "weatherapi";
+                        options.ApiName = "churchapi";
                         options.Authority = "http://localhost:55334";
                         options.RequireHttpsMetadata = false;
                     });

@@ -1,8 +1,7 @@
 using Dbank.Digisoft.Api;
+using Dbank.Digisoft.Ussd.SDK.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Dbank.Digisoft.Ussd.SDK.Extensions;
-using Serilog;
 
 BuildWebHost(args).Run();
 

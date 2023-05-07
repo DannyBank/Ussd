@@ -12,10 +12,11 @@ namespace Dbank.Digisoft.Church.Ussd {
 
         public static IWebHost CreateHostBuilder(string[] args)
         {
-               return WebHost.CreateDefaultBuilder(args)
-                            .AddSerilogLogging()
-                            .UseStartup<Startup>()
-                            .Build();
+            return WebHost.CreateDefaultBuilder(args)
+                         .AddSerilogLogging()
+                         .AddCustomKeyValues()
+                         .UseStartup<Startup>()
+                         .Build();
         }
     }
 }

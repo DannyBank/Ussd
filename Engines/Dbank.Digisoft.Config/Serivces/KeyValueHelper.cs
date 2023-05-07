@@ -22,8 +22,8 @@ namespace Dbank.Digisoft.Config.Serivces
             {
                 var environment = Path.Combine(_kvUrl, key);
                 var paths = _fileHelper.GetDirectoriesAndFiles(environment);
-                var jObjects = await _fileHelper.GetContents(paths!.DirectoriesAndFiles);
-                return MergeJsonObjects(jObjects);
+                var jObjects = await _fileHelper.GetContents(paths!.DirectoriesAndFiles!);
+                return MergeJsonObjects(jObjects!);
             }
             catch (Exception ex)
             {
@@ -34,6 +34,7 @@ namespace Dbank.Digisoft.Config.Serivces
 
         private static JObject MergeJsonObjects(List<JObject> objects)
         {
+            if (objects == null || objects.Count == 0) return new();
             JObject json = new ();
             foreach (JObject JSONObject in objects)
             {

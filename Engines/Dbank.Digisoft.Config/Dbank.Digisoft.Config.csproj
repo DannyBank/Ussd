@@ -12,9 +12,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="KeyValues\Development\Church\" />
-    <Folder Include="KeyValues\Development\PrediBet\" />
-  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties keyvalues_4dbank_1digisoft_1predibet_1ussd_4development_4appconfigs_1json__JsonSchema="https://json.schemastore.org/appsettings.json" /></VisualStudio></ProjectExtensions>
 
 </Project>

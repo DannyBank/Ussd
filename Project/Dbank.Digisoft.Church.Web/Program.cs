@@ -1,3 +1,4 @@
+using Dbank.Digisoft.Church.Web.Services;
 using Dbank.Digisoft.Church.Web.Services.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.Configure<IdentityServerSettings>(builder.Configuration.GetSection("IdentityServerSettings"));
 builder.Services.AddTransient<ITokenService, TokenService>();
+builder.Services.AddTransient<ChurchMemberService>();
 
 var app = builder.Build();
 

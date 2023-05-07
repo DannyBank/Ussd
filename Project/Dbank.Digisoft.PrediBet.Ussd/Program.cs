@@ -16,6 +16,7 @@ namespace Dbank.Digisoft.PrediBet.Ussd
         {           
                return WebHost.CreateDefaultBuilder(args)
                             .AddSerilogLogging()
+                            .AddCustomKeyValues()
                             .UseStartup<Startup>()
                             .Build();
         }

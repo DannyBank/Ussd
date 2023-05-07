@@ -17,13 +17,13 @@ namespace Dbank.Digisoft.Config.Controllers
             _kvHelper = kvHelper;
         }
 
-        [HttpGet("get/{key}")]
-        public async Task<string> Get(string key)
+        [HttpGet("get/{app}/{env}")]
+        public async Task<string> Get(string app, string env)
         {
             try
             {
                 if (!ModelState.IsValid) return null!;
-                var result = await _kvHelper.GetJsonContent(key);
+                var result = await _kvHelper.GetJsonContent(Path.Combine(app,env));
                 return JsonConvert.SerializeObject(result, Formatting.Indented);
             }
             catch (Exception ex)

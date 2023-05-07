@@ -19,12 +19,12 @@ namespace Dbank.Digisoft.PrediBet.Ussd
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<AppSettings>(_configuration.GetSection("App"));
-            services.Configure<AppStrings>(_configuration.GetSection("Outputs"));
-            services.Configure<MenuData>(_configuration.GetSection("MenuData"));
-            services.AddSessionServices()
-                    .AddBusinessDI();
-            services.AddMvc();
+            services.Configure<AppSettings>(_configuration.GetSection("App"))
+                    .Configure<AppStrings>(_configuration.GetSection("Outputs"))
+                    .Configure<MenuData>(_configuration.GetSection("MenuData"))
+                    .AddSessionServices()
+                    .AddBusinessDI()
+                    .AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

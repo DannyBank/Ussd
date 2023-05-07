@@ -1,6 +1,6 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Data.Extensions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+﻿using Dbank.Digisoft.Ussd.Data.Extensions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using System;
 using System.Linq;
 

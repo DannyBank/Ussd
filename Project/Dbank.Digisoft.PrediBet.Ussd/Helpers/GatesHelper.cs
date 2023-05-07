@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.Data.Extensions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.Data.Extensions;
+using Dbank.Digisoft.Ussd;
 
 namespace Dbank.Digisoft.PrediBet.Ussd.Helpers
 {

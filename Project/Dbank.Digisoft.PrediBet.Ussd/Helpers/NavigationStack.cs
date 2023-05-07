@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 
 namespace Dbank.Digisoft.PrediBet.Ussd.Helpers
 {

@@ -1,31 +1,33 @@
 ﻿using Dbank.Digisoft.PrediBet.Ussd;
-using Dbank.Digisoft.PrediBet.Ussd.Data.Models;
-using Dbank.Digisoft.PrediBet.Ussd.Menus;
 using Dbank.Digisoft.PrediBet.Ussd.MenuViews;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+using Dbank.Digisoft.Ussd.Data.Abstractions;
+using Dbank.Digisoft.Ussd.Data.Models;
+using Dbank.Digisoft.Ussd.Data.Models.PrediBet;
+using Dbank.Digisoft.Ussd.Menus;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SmartFormat;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.PrediBet.MenuViews {
+namespace Dbank.Digisoft.MenuViews
+{
     public class ViewPayMenuView : MenuView<ViewPayMenu> {
         private readonly ILogger<ViewPayMenuView> _logger;
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly IPrediBetClient _appHelper;
 
         public ViewPayMenuView(ILogger<ViewPayMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db) {
+            IPrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
@@ -40,7 +42,7 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
             if (menuData == null)
                 return new MenuCollection(_appStrings.InvalidBookingCode);
             sessionData.StoreSessionData(AppConstants.SELECTED_BOOKING_CODE, menuData.Text);
-            var bookingSet = await _appHelper.GetBookingByCode(menuData.Text);
+            var bookingSet = await _appHelper.GetBookingsByCode(menuData.Text);
             sessionData.StoreSessionData(AppConstants.SELECTED_BOOKING_SET, bookingSet);
 
             //Display View/Pay menu
@@ -66,7 +68,7 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
             var bookingCode = menuData.BookingCode 
                 ?? sessionData.GetSessionData<string>(AppConstants.SELECTED_BOOKING_CODE);
             var bookings = sessionData.GetSessionData<List<Booking>>(AppConstants.SELECTED_BOOKING_SET)
-                ?? await _appHelper.GetBookingByCode(bookingCode);
+                ?? await _appHelper.GetBookingsByCode(bookingCode);
             if (bookings == null) return new(_appStrings.InvalidBookingCode);
             if (bookings.Count == 0) return new(_appStrings.NoBookingsForCode);
 
@@ -152,7 +154,7 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
             var bookingCode = sessionData.GetSessionData<string>(AppConstants.SELECTED_BOOKING_CODE);
 
             var bookingSet = sessionData.GetSessionData<List<Booking>>(AppConstants.SELECTED_BOOKING_SET)
-                ?? await _appHelper.GetBookingByCode(bookingCode);
+                ?? await _appHelper.GetBookingsByCode(bookingCode);
 
             //replace current predicition with new one
             bookingSet.Find(r => r.BookingId == bookingId).Prediction = menuData.Prediction;
@@ -179,7 +181,7 @@ namespace Dbank.Digisoft.PrediBet.MenuViews {
 
         private async Task<MomoPaymentResult> ProcessMoMoPayment(List<Booking> selectedBooking,
             UssdMenuItem input, SessionInfo sessionData = null) {
-            return new MomoPaymentResult();
+            return new() { Success = true};
         }
 
         private async Task<List<Booking>> GetSelectedBooking(string selectedCode, SessionInfo sessionData) {

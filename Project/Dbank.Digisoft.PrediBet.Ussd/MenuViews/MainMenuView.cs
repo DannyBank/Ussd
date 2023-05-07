@@ -1,33 +1,33 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Data.Models;
-using Dbank.Digisoft.PrediBet.Ussd.Menus;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Abstractions;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Models;
-using Dbank.Digisoft.PrediBet.Ussd.SDK.Session.Models;
+﻿using Dbank.Digisoft.Ussd.Data.Abstractions;
+using Dbank.Digisoft.Ussd.Menus;
+using Dbank.Digisoft.Ussd.SDK.Abstractions;
+using Dbank.Digisoft.Ussd.SDK.Models;
+using Dbank.Digisoft.Ussd.SDK.Session.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SmartFormat;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews {
+namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews
+{
     public class MainMenuView : MenuView<MainMenu> {
         private readonly ILogger<MainMenuView> _logger;
         private readonly MenuData _menuData;
         private readonly AppSettings _appSettings;
         private readonly AppStrings _appStrings;
-        private readonly IApplicationDataHelper _appHelper;
+        private readonly IPrediBetClient _dbClient;
 
         public MainMenuView(ILogger<MainMenuView> logger,
             IOptionsSnapshot<MenuData> menuData,
             IOptionsSnapshot<AppSettings> appSettings,
             IOptionsSnapshot<AppStrings> appStrings,
-            IApplicationDataHelper db) {
+            IPrediBetClient db) {
             _logger = logger;
             _menuData = menuData.Value;
             _appSettings = appSettings.Value;
             _appStrings = appStrings.Value;
-            _appHelper = db;
+            _dbClient = db;
         }
 
         [Handler("Index")]
@@ -57,7 +57,7 @@ namespace Dbank.Digisoft.PrediBet.Ussd.MenuViews {
         [Handler("DisplayBookedSets")]
         private async Task<MenuCollection> DisplayBookedSets(UssdMenuItem input, SessionInfo sessionData = null) {
             var menuItems = new List<UssdMenuItem>();
-            var bookingList = await _appHelper.GetBookings();
+            var bookingList = await _dbClient.GetBookings();
             if (bookingList == null || bookingList.Count == 0)
                 return new(_appStrings.NoPredictionsToday);
 

@@ -1,4 +1,4 @@
-﻿using Dbank.Digisoft.PrediBet.Ussd.Menus;
+﻿using Dbank.Digisoft.Ussd.Menus;
 using System.Collections.Generic;
 
 namespace Dbank.Digisoft.PrediBet.Ussd {

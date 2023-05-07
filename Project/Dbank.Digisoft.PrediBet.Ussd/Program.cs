@@ -1,8 +1,10 @@
+using Dbank.Digisoft.Ussd.SDK.Extensions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Dbank.Digisoft.PrediBet.Ussd {
+namespace Dbank.Digisoft.PrediBet.Ussd
+{
     public class Program
     {
         public static void Main(string[] args)
@@ -11,11 +13,12 @@ namespace Dbank.Digisoft.PrediBet.Ussd {
         }
 
         public static IWebHost CreateHostBuilder(string[] args)
-        {
-           
+        {           
                return WebHost.CreateDefaultBuilder(args)
-               .UseStartup<Startup>()
-               .Build();
+                            .AddSerilogLogging()
+                            .AddCustomKeyValues()
+                            .UseStartup<Startup>()
+                            .Build();
         }
     }
 }
